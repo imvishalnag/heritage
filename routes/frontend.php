@@ -1,17 +1,5 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
@@ -21,7 +9,26 @@ Route::get('/clear-cache', function() {
     return "<center><h1 style='text-transform: uppercase; text-align: center; padding: 15px 20px; margin-top: 5%; font-family: sans-serif; font-size: 50px; color: #fff; background-color: green; display: inline-block; border-radius: 10px;'>cache cleared!</h1></center>";
 });
 
+// Member Login Control
+Route::get('/member/login', 'Member\MemberLoginController@showMemberLoginForm')->name('member.login');
+Route::post('/member/login', 'Member\MemberLoginController@memberLogin');
+Route::post('/member/logout', 'Member\MemberLoginController@logout')->name('member.logout');
+
+// Member Register
+Route::get('/member/register', 'Member\MemberRegisterController@showMemberRegisterForm')->name('member.register');
+Route::post('/member/signup', 'Member\MemberRegisterController@registerMember')->name('member.signup');
 Route::get('/', 'Frontend\Home\PostController@index');
+
+// Subscription Area
+Route::get('/membership', 'Member\WebController@membership')->name('membership');
+Route::get('/before/checkout/{id}', 'Member\WebController@beforeCheckout')->name('before_checkout');
+Route::post('/pay/now', 'Member\WebController@payNow')->name('paynow');
+
+Route::group(['middleware'=>'auth:member','prefix'=>'member','namespace'=>'Member'],function(){
+    Route::get('pay-success/{id}', 'WebController@success')->name('pay_success');
+    Route::get('status', 'WebController@statusPage')->name('status_page');
+});
+
 
 Route::get('home','Frontend\Home\PostController@index')->name('frontend.home'); 
 
@@ -95,25 +102,25 @@ Route::get('/contact', function () {
     return view('frontend.pages.contact');
 })->name('contact');
 
-Route::get('/membership', function () {
-    return view('frontend.pages.membership');
-})->name('membership');
+// Route::get('/membership', function () {
+//     return view('frontend.pages.membership');
+// })->name('membership');
 
-Route::get('/checkout', function () {
-    return view('frontend.pages.checkout');
-})->name('checkout');
+// Route::get('/checkout', function () {
+//     return view('frontend.pages.checkout');
+// })->name('checkout');
 
-Route::get('/thank', function () {
-    return view('frontend.pages.thank');
-})->name('thank');
+// Route::get('/thank', function () {
+//     return view('frontend.pages.thank');
+// })->name('thank');
 
-Route::get('/member/login', function () {
-    return view('frontend.pages.login');
-})->name('member.login');
+// Route::get('/member/login', function () {
+//     return view('frontend.pages.login');
+// })->name('member.login');
 
-Route::get('/member/register', function () {
-    return view('frontend.pages.signup');
-})->name('member.register');
+// Route::get('/member/register', function () {
+//     return view('frontend.pages.signup');
+// })->name('member.register');
 
 Route::namespace('Frontend')->group(function () {
     Route::namespace('Gallery')->group(function () {

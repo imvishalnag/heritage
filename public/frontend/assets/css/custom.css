@@ -548,6 +548,9 @@ img {
 .membership .entry-thumbnail {
   background: linear-gradient(45deg, #079bbb -20%, #e8ae1b 80%);
 }
+.invalid-feedback{
+  display:block !important;
+}
 
 
 

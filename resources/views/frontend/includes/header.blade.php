@@ -53,7 +53,20 @@
 			<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 			<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 			<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-			<li><a href="{{route('member.login')}}"><i class="fa fa-user"></i> Sign In</a></li>
+			<li>
+				@if(!Auth::guard('member')->user())
+					<a href="{{route('member.login')}}"><i class="fa fa-user"></i> Sign In</a>
+				@else
+				{{Auth::guard('member')->user()->username}}
+				<a href="{{ route('member.logout') }}" class="fa fa-sign-out" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                    Logout
+                </a>     
+                <form id="frm-logout" action="{{ route('member.logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+				@endif
+
+			</li>
 		</ul>
 		<a href="mailto:ourheritage123@gmail.com" class="xs-top-bar-mail"><i class="fa fa-envelope-o"></i>ourheritage123@gmail.com</a>
 		<a href="tel: +91 0361-2636365" class="xs-top-bar-mail header-phone d-sm-none"><i class="fa fa-phone"></i>+91 0361-2636365</a>
@@ -93,7 +106,19 @@
 							</ul>
 						</li>
 						<li><a href="{{route('contact')}}">Contact</a></li>
-						<li><a href="{{route('membership')}}">Membership</a></li>
+						@if(Auth::guard('member')->id())
+							@php
+								$user = App\Member::find(Auth::guard('member')->id());
+								$plan = DB::table('plan_subscriptions')->where('user_id', Auth::guard('member')->id())->first();
+							@endphp
+							@if(!empty($plan->plan_id))
+								<li><a href="{{route('status_page')}}">Membership</a></li>
+							@else
+								<li><a href="{{route('membership')}}">Membership</a></li>
+							@endif
+						@else
+							<li><a href="{{route('membership')}}">Membership</a></li>
+						@endif
 					</ul><!-- .nav-menu END -->
 				</div>
 			</div><!-- .nav-menus-wrapper .row END -->

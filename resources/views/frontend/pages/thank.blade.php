@@ -24,29 +24,33 @@
 			<div class="col-lg-4 col-md-6 col-xs-6">
 				<div class="xs-box-shadow xs-single-journal xs-mb-30">
 					<div class="entry-thumbnail ">
-						<h4> 3 Months plan</h4>
+						<h4> {{$plans->name}}</h4>
 						<div class="post-author">
 							<span class="xs-round-avatar">
-								<p>₹500</p>
+								<p>₹{{$plans->price}}</p>
 							</span>
 						</div>
 					</div><!-- .xs-item-header END -->
 					<span class="xs-separetor"></span>
 					<div class="post-meta meta-style-color cust1">
-						<p class="mb-0">Publishing useful literatures on indigenous traditions and spiritual Knowledge of different ethnic communities of this region.</p>
+						<p class="mb-0">{{$plans->description}}</p>
 					</div><!-- .post-meta END -->
 				</div><!-- .xs-from-journal END -->
 			</div>
 			<div class="col-lg-8 col-md-6 col-xs-6">
 				<div class="xs-box-shadow xs-single-journal xs-mb-30 pt-3">
 					<div class="xs-heading text-center">
-						<h4 class="xs-mb-0 xs-title" style="font-size:30px;"> Thank You<span class="color-green"> your menbership is successful</span> </h4>
+							<h4 class="xs-mb-0 xs-title" style="font-size:30px;"> Thank You<span class="color-green"> your menbership is successful</span> </h4>
+							<small> Plan Validity: {{$plans->invoice_period}} Months</small>
+							<small>Plan Starts: {{$plans->starts_at}}</small>
+							<small>Plan Expires: {{$plans->ends_at}}</small>
+							<small>Subscription Status: Active</small>	
 					</div>
 					<div class="post-meta meta-style-color cust1">
-						<p class="mb-0">Publishing useful literatures on indigenous traditions and spiritual Knowledge of different ethnic communities of this region.Publishing useful literatures on indigenous traditions and spiritual Knowledge of different ethnic communities of this region.</p>
+						<p class="mb-0">{{$plans->description}}</p>
 					</div><!-- .post-meta END -->
 					<div class="post-meta meta-style-color cust1 text-center mt-0">
-						<a href="{{route('checkout')}}" class="btn btn-secondary bg-bondiBlue mb-2">Go to homepage</a>
+						<a href="/" class="btn btn-secondary bg-bondiBlue mb-2">Go to homepage</a>
 					</div><!-- .post-meta END -->
 				</div><!-- .xs-from-journal END -->
 			</div>
