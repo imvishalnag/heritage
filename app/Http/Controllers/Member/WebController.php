@@ -122,10 +122,12 @@ class WebController extends Controller
             ->join('plan_subscriptions','plans.id', '=', 'plan_subscriptions.plan_id')
             ->join('members', 'members.id', '=', 'plan_subscriptions.user_id')
             ->where('members.id', Auth::guard('member')->id())->first();
-        
+        $date = Carbon::parse($plans->ends_at);
+        $now = Carbon::now();
+        $usage = $date->diffInDays($now);
         // Get subscriptions with period ending in 15 days
         $subscriptions = app('rinvex.subscriptions.plan_subscription')->findEndingPeriod(15)->get();
-        return view('frontend.pages.thank', compact('plans', 'user'));
+        return view('frontend.pages.thank', compact('plans', 'user', 'usage'));
 
      }
 }

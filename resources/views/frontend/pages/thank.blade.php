@@ -44,6 +44,7 @@
 							<small> Plan Validity: {{$plans->invoice_period}} Months</small>
 							<small>Plan Starts: {{$plans->starts_at}}</small>
 							<small>Plan Expires: {{$plans->ends_at}}</small>
+							<small>Usage: {{$usage}} Days remaining</small>	
 							<small>Subscription Status: Active</small>	
 					</div>
 					<div class="post-meta meta-style-color cust1">
