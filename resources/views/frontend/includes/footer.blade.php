@@ -9,9 +9,9 @@
 							</a>
 							<p>Heritage Foundation is a registered Charitable Trust founded on 11th day of Kartik (Shukla Paksha), Shakabda 1922/ the 8th November 2000.</p>
 							<ul class="xs-social-list-v2">
-								<li><a href="#" class="color-facebook"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="https://www.facebook.com/Heritage-Foundation-526700334382456/" class="color-facebook"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#" class="color-twitter"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#" class="color-dribbble"><i class="fa fa-youtube"></i></a></li>
+								<li><a href="https://www.youtube.com/channel/UC_oBh8VUuYjrz9Ef_1s2Rlw" class="color-dribbble"><i class="fa fa-youtube"></i></a></li>
 							</ul><!-- .xs-social-list END -->
 						</div>
 						<div class="col-lg-2 col-md-6 footer-widget">

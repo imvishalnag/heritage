@@ -30,6 +30,7 @@ class WebController extends Controller
 
     public function payNow(Request $request)
     {
+        
         if(Auth::guard('member')->check()){
             $user = Member::find(Auth::guard('member')->id());
             if($user->subscription('main')==NULL){
@@ -128,6 +129,10 @@ class WebController extends Controller
         // Get subscriptions with period ending in 15 days
         $subscriptions = app('rinvex.subscriptions.plan_subscription')->findEndingPeriod(15)->get();
         return view('frontend.pages.thank', compact('plans', 'user', 'usage'));
+     }
 
+     public function download(){
+        $user = Member::find(Auth::guard('member')->id());
+        
      }
 }

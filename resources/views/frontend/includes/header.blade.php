@@ -50,7 +50,7 @@
 <div class="xs-top-bar top-bar-second">
 	<div class="container clearfix">
 		<ul class="xs-top-social">
-			<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+			<li><a href="https://www.facebook.com/Heritage-Foundation-526700334382456/"><i class="fa fa-facebook"></i></a></li>
 			<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 			<li><a href="#"><i class="fa fa-instagram"></i></a></li>
 			<li>
@@ -91,14 +91,14 @@
 					<ul class="nav-menu">
 						<li><a href="{{route('frontend.home')}}">Home</a></li>
 						<li><a href="{{route('about')}}">about</a></li>
-						<li><a href="{{route('heritage')}}">Heritage</a></li>
-						<li><a href="{{route('magazine')}}">Magazine</a></li>
+						<li><a href="{{route('heritage')}}">Heritage Explorer</a></li>
+						<li><a href="{{route('magazine')}}">Oitihya Barta</a></li>
 						<li><a href="{{route('publication')}}">Publication</a></li>
 						<li><a href="{{route('current_issue')}}">Current Issue</a></li>
-						<li><a href="{{route('donation')}}">Donation</a></li>
 						<li><a href="#">More</a>
 							<ul class="nav-dropdown">
 								<li><a href="{{route('events')}}">Events</a></li>
+								<li><a href="{{route('donation')}}">Donation</a></li>
 								<li><a href="{{route('gallery')}}">Gallery</a></li>
 								<li><a href="{{route('video')}}">Video</a></li>
 								<li><a href="{{route('tribes_of_ne')}}">Tribes of NE</a></li>

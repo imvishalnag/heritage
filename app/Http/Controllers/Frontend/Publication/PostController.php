@@ -15,4 +15,5 @@ class PostController extends Controller
 
         return view('frontend.pages.publication', ['publication' => $publication]);
     }
+    
 }

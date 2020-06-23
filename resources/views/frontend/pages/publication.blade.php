@@ -19,7 +19,7 @@
 
 <section class="xs-section-padding">
 	<div class="container">
-			@if(count($publication)  ==0)
+			@if(count($publication)  == 0)
 				<center><b class="text-danger">Sorry! No data found.</b></center>
 			@endif
 		<div class="row mb-2">

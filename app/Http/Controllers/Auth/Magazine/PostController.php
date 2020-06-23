@@ -27,10 +27,17 @@ class PostController extends Controller
             'author'       => "required|min:3",
         ]);
 
-        if ($request->hasFile('file')) {
+        if ($request->hasFile('file') && $request->hasFile('pdf_file')) {
 
             $image        = $request->file('file');
             $file_name    = time() . ".jpg";
+
+
+            $file_upload = $request->file('pdf_file');
+            $file   = time().'.'.$file_upload->getClientOriginalExtension();
+            
+            $path = $request->file('pdf_file')->move('assets/magazine/',$file);
+
 
             $image_resize = Image::make($image->getRealPath());
 
@@ -55,6 +62,7 @@ class PostController extends Controller
                     'price'      => $request->input('price'),
                     'author'     => $request->input('author'),
                     'file'       => $file_name,
+                    'pdf_file'   => $path,
                     'date'       => $date_i,
                     "created_at" =>  \Carbon\Carbon::now(),
                     "updated_at" => \Carbon\Carbon::now(),
@@ -90,6 +98,7 @@ class PostController extends Controller
 
         $request->validate([
             'file'         => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'pdf_file'     => "required|mimetypes:application/pdf|max:20000",
             'title'        => "required",
             'price'        => "required|integer|min:1",
             'author'       => "required|min:3",

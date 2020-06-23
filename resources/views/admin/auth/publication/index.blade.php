@@ -71,6 +71,19 @@
                           @enderror
                         </div>
                       </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="exampleInputFile">File (PDF)</label>
+                          <div class="input-group">
+                            <input type="file" class="form-control" name="pdf_file" style="height: auto;" required="" id="imgInp">
+                            @if($errors->has('pdf_file'))
+                              <span class="invalid-feedback" role="alert" style="color:red">
+                                <strong>{{ $errors->first('pdf_file') }}</strong>
+                              </span>
+                            @enderror
+                          </div>
+                        </div>
+                      </div>
                         <div class="col-md-12">
                         <div class="form-group">
                           <label for="exampleInputFile">Thumbnail</label>
