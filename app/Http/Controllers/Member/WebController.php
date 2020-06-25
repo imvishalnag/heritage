@@ -9,6 +9,7 @@ use App\Member;
 use DB;
 use App\Payment;
 use Carbon\Carbon;
+use App\PlanSubscriptions;
 class WebController extends Controller
 {
     public function membership()
@@ -33,7 +34,9 @@ class WebController extends Controller
         
         if(Auth::guard('member')->check()){
             $user = Member::find(Auth::guard('member')->id());
-            if($user->subscription('main')==NULL){
+            // Subscription Check
+            $subscription = DB::table('plan_subscriptions')->where('user_id', $user->id)->first();
+            if($subscription==NULL){
                 $plan_id = $request->input('plan_id');
                 $plan = DB::table('plans')->find($plan_id);
                 $api = new \Instamojo\Instamojo(
@@ -99,9 +102,19 @@ class WebController extends Controller
         $payments->purpose = $response['purpose'];
         if($payments->save()){
             $user = Member::find(Auth::guard('member')->id());
-            $plan = app('rinvex.subscriptions.plan')->find($id);
-            $subscription = $user->newSubscription('main', $plan);
-            // dd($subscription);
+            $plan = DB::table('plans')->find($id);
+
+            $subscription = new PlanSubscriptions;
+            $subscription->user_type = 'App\Member';
+            $subscription->user_id = $user->id;
+            $subscription->plan_id = $plan->id;
+            $subscription->description = $plan->description;
+            $subscription->trial_ends_at = Carbon::now()->setTimezone('Asia/Kolkata')->toDateTimeString();
+            $subscription->starts_at = Carbon::now()->setTimezone('Asia/Kolkata')->toDateTimeString();
+            $subscription->ends_at = Carbon::parse(Carbon::now()->setTimezone('Asia/Kolkata')->toDateTimeString())->addMonths($plan->invoice_period);
+            $subscription->created_at = Carbon::now()->setTimezone('Asia/Kolkata')->toDateTimeString();
+            $subscription->updated_at = Carbon::now()->setTimezone('Asia/Kolkata')->toDateTimeString();
+            $subscription->save();
             $subscription_usage = DB::table('plan_subscription_usage')
                 ->insert([
                     'subscription_id' => $subscription->id,
@@ -127,7 +140,6 @@ class WebController extends Controller
         $now = Carbon::now();
         $usage = $date->diffInDays($now);
         // Get subscriptions with period ending in 15 days
-        $subscriptions = app('rinvex.subscriptions.plan_subscription')->findEndingPeriod(15)->get();
         return view('frontend.pages.thank', compact('plans', 'user', 'usage'));
      }
 
