@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Member;
 use Hash;
+use Session;
+use Auth;
 class MemberRegisterController extends Controller
 {
     public function showMemberRegisterForm()
@@ -48,7 +50,14 @@ class MemberRegisterController extends Controller
         $member->password = Hash::make($request->input('password'));
 
         if($member->save()){
-            return redirect()->route('member.login')->with('message', 'Registerd Successfully!');
+            if(Auth::guard('member')->attempt(['username' => $request->username, 'password' => $request->password])){
+                if(Session::has('oldUrl')){
+                    $oldUrl = Session::get('oldUrl');
+                    Session::forget('oldUrl');
+                    return redirect()->to($oldUrl);
+                }
+                return redirect()->route('membership');
+            }
         }
     }
 }

@@ -22,12 +22,12 @@ Route::get('/', 'Frontend\Home\PostController@index');
 // Subscription Area
 Route::get('/membership', 'Member\WebController@membership')->name('membership');
 Route::get('/before/checkout/{id}', 'Member\WebController@beforeCheckout')->name('before_checkout');
-Route::post('/pay/now', 'Member\WebController@payNow')->name('paynow');
 
 Route::group(['middleware'=>'auth:member','prefix'=>'member','namespace'=>'Member'],function(){
     Route::get('pay-success/{id}', 'WebController@success')->name('pay_success');
     Route::get('status', 'WebController@statusPage')->name('status_page');
     Route::get('download', 'WebController@download')->name('download');
+    Route::post('/pay/now', 'WebController@payNow')->name('paynow');
 });
 
 

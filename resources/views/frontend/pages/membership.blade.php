@@ -6,8 +6,8 @@
 	<div class="xs-black-overlay"></div>
 	<div class="container">
 		<div class="color-white xs-inner-banner-content">
-			<h2>Membership</h2>
-			<p>Select your membership plan</p>
+			<h2>Subscription</h2>
+			<p>Select your subscription plan</p>
 			<ul class="xs-breadcumb">
 				<li class="badge badge-pill badge-primary"><a href="{{route('frontend.home')}}" class="color-white"> Home /</a> Details</li>
 			</ul>
