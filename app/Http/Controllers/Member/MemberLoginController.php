@@ -18,7 +18,7 @@ class MemberLoginController extends Controller
         return view('frontend.pages.login', ['url' => 'member']);
     }
 
-    public static function memberLogin(Request $request){
+    public function memberLogin(Request $request){
         $this->validate($request, [
             'username'   => 'required',
             'password' => 'required|min:6'
