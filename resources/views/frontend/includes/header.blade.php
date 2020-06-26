@@ -112,12 +112,12 @@
 								$plan = DB::table('plan_subscriptions')->where('user_id', Auth::guard('member')->id())->first();
 							@endphp
 							@if(!empty($plan->plan_id))
-								<li><a href="{{route('status_page')}}">Membership</a></li>
+								<li><a href="{{route('status_page')}}">Subscription</a></li>
 							@else
-								<li><a href="{{route('membership')}}">Membership</a></li>
+								<li><a href="{{route('membership')}}">Subscription</a></li>
 							@endif
 						@else
-							<li><a href="{{route('membership')}}">Membership</a></li>
+							<li><a href="{{route('membership')}}">Subscription</a></li>
 						@endif
 					</ul><!-- .nav-menu END -->
 				</div>

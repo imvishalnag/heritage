@@ -31,39 +31,34 @@ class WebController extends Controller
 
     public function payNow(Request $request)
     {
-        
-        if(Auth::guard('member')->check()){
-            $user = Member::find(Auth::guard('member')->id());
-            // Subscription Check
-            $subscription = DB::table('plan_subscriptions')->where('user_id', $user->id)->first();
-            if($subscription==NULL){
-                $plan_id = $request->input('plan_id');
-                $plan = DB::table('plans')->find($plan_id);
-                $api = new \Instamojo\Instamojo(
-                    config('services.instamojo.api_key'),
-                    config('services.instamojo.auth_token'),
-                    config('services.instamojo.url')
-                );
-                try {
-                    $response = $api->paymentRequestCreate(array(
-                        "purpose" => $plan->name,
-                        "amount" => $plan->price,
-                        "buyer_name" => $user->name,
-                        "send_email" => true,
-                        "email" => "$user->email",
-                        "phone" => "$user->phone",
-                        "redirect_url" => route('pay_success', ['id' => encrypt($plan_id)])
-                        ));
-                        header('Location: ' . $response['longurl']);
-                        exit();
-                }catch (Exception $e) {
-                    print('Error: ' . $e->getMessage());
-                }
-            }else{
-                return redirect()->back()->with('error', 'You have already active plan!');
+        $user = Member::find(Auth::guard('member')->id());
+        // Subscription Check
+        $subscription = DB::table('plan_subscriptions')->where('user_id', $user->id)->first();
+        if($subscription==NULL){
+            $plan_id = $request->input('plan_id');
+            $plan = DB::table('plans')->find($plan_id);
+            $api = new \Instamojo\Instamojo(
+                config('services.instamojo.api_key'),
+                config('services.instamojo.auth_token'),
+                config('services.instamojo.url')
+            );
+            try {
+                $response = $api->paymentRequestCreate(array(
+                    "purpose" => $plan->name,
+                    "amount" => $plan->price,
+                    "buyer_name" => $user->name,
+                    "send_email" => true,
+                    "email" => "$user->email",
+                    "phone" => "$user->phone",
+                    "redirect_url" => route('pay_success', ['id' => encrypt($plan_id)])
+                    ));
+                    header('Location: ' . $response['longurl']);
+                    exit();
+            }catch (Exception $e) {
+                print('Error: ' . $e->getMessage());
             }
         }else{
-            return redirect()->route('member.login')->with('error', 'You have to login first!');
+            return redirect()->back()->with('error', 'You have already active plan!');
         }
     }
 

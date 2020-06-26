@@ -61,6 +61,9 @@ class Handler extends ExceptionHandler
         }
         $guard = Array($exception->guards(), 0);
         switch ($guard) {
+            case 'admin':
+                $login = 'admin.login';
+                break;
             case 'member':
                 $login = 'member.login';
                 break;  
@@ -72,7 +75,7 @@ class Handler extends ExceptionHandler
                 ];
                 return response()->json($response, 200);              
             default:
-                $login = 'admin.login';
+                $login = 'member.login';
                 break;
         }
         return redirect()->guest(route($login));

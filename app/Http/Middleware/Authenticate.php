@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Support\Facades\Auth;
-
+use Session;
 class Authenticate extends Middleware
 {
     /**
@@ -18,10 +18,11 @@ class Authenticate extends Middleware
         if (! $request->expectsJson()) {
             if (Auth::guard($guard)->check()) {
                 switch ($guard) {
-                   case 'admin':
-                       $route = 'admin/dashboard';
-                       break;
-                   case 'member':
+                    case 'web':
+                        $route = 'admin/dashboard';
+                    break;
+                    case 'member':
+                        Session::put('oldUrl', $request->url());
                        $route = 'member/dashboard';
                        break;
                   default:
