@@ -142,4 +142,43 @@ class WebController extends Controller
         $user = Member::find(Auth::guard('member')->id());
         
      }
+
+    public function subscriptionPdfPublication($id){
+        try {
+            $id = decrypt($id);
+        }catch(DecryptException $e) {
+            return redirect()->back();
+        }
+
+        // Generate Download link
+        $book = DB::table('publication')->where('id', $id)->first();
+        if(!empty($book->pdf_file)){
+            if (file_exists(public_path($book->pdf_file))){
+                return response()->download(public_path($book->pdf_file));
+            }else{
+                abort(404);
+            }
+        }else{
+            abort(404);
+        }
+    }
+    public function subscriptionPdfMagazine($id){
+        try {
+            $id = decrypt($id);
+        }catch(DecryptException $e) {
+            return redirect()->back();
+        }
+
+        // Generate Download link
+        $book = DB::table('magazine')->where('id', $id)->first();
+        if(!empty($book->pdf_file)){
+            if (file_exists(public_path($book->pdf_file))){
+                return response()->download(public_path($book->pdf_file));
+            }else{
+                abort(404);
+            }
+        }else{
+            abort(404);
+        }
+    }
 }

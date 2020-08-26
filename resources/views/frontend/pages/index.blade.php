@@ -172,14 +172,14 @@
 			@foreach($publication as $publication_single)
 			<div class="col-lg-4 col-md-6">
 				<div class="xs-box-shadow xs-single-journal xs-mb-30">
-					@if(Auth::guard('member')->id())
+					@if(Auth::guard('member')->check())
 						<div class="entry-thumbnail ">
 							@php
 								$id = App\Member::where('id', (Auth::guard('member')->user()->id))->value('id');
 								$plans = \DB::table('plan_subscriptions')->where('user_id', $id)->first();
 							@endphp
 							@if(!empty($plans))
-							<a href="{{asset($publication_single->pdf_file)}}">
+							<a href="{{route('subscriptions.pdf.publication', ['id' => encrypt($publication_single->id)])}}">
 								<img class="lazy" src="loader.gif" data-src="{{asset('assets/publication/'.$publication_single->file.'')}}" data-srcset="{{asset('assets/publication/'.$publication_single->file.'')}}" alt="">
 							</a>
 							@else
@@ -212,6 +212,7 @@
 						</div><!-- .post-meta END -->
 					@else
 						<div class="entry-thumbnail ">
+						
 							<img class="lazy" src="loader.gif" data-src="{{asset('assets/publication/'.$publication_single->file.'')}}" data-srcset="{{asset('assets/publication/'.$publication_single->file.'')}}" alt="">
 							<div class="post-author">
 								<span class="xs-round-avatar">
@@ -257,7 +258,7 @@
 						        $plans = \DB::table('plan_subscriptions')->where('user_id', $id)->first();
 							@endphp
 							@if(!empty($plans))
-								<a href="{{asset($magazine_single->pdf_file)}}">
+								<a href="{{route('subscriptions.pdf.magazine', ['id' => encrypt($magazine_single->id)])}}">
 									<img class="lazy" src="loader.gif" data-src="{{asset('assets/magazine/'.$magazine_single->file.'')}}" data-srcset="{{asset('assets/magazine/'.$magazine_single->file.'')}}" alt="">
 								</a>
 							@else

@@ -28,6 +28,9 @@ Route::group(['middleware'=>'auth:member','prefix'=>'member','namespace'=>'Membe
     Route::get('status', 'WebController@statusPage')->name('status_page');
     Route::get('download', 'WebController@download')->name('download');
     Route::post('/pay/now', 'WebController@payNow')->name('paynow');
+    // DRM ACCESS
+    Route::get('/secure/subscription/publication/{id}', 'WebController@subscriptionPdfPublication')->name('subscriptions.pdf.publication');
+    Route::get('/secure/subscription/magazine/{id}', 'WebController@subscriptionPdfMagazine')->name('subscriptions.pdf.magazine');
 });
 
 
