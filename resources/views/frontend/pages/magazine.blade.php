@@ -30,12 +30,12 @@
 						<div class="entry-thumbnail ">
 							@php
 								$id = App\Member::where('id', (Auth::guard('member')->user()->id))->value('id');
-								$plans = \DB::table('plan_subscriptions')->where('user_id', $id)->first();
+						        $plans = \DB::table('plan_subscriptions')->where('user_id', $id)->first();
 							@endphp
 							@if(!empty($plans))
-							<a href="{{asset($magazine_single->pdf_file)}}">
-								<img class="lazy" src="loader.gif" data-src="{{asset('assets/magazine/'.$magazine_single->file.'')}}" data-srcset="{{asset('assets/magazine/'.$magazine_single->file.'')}}" alt="">
-							</a>
+								<a href="{{route('subscriptions.pdf.magazine', ['id' => encrypt($magazine_single->id)])}}">
+									<img class="lazy" src="loader.gif" data-src="{{asset('assets/magazine/'.$magazine_single->file.'')}}" data-srcset="{{asset('assets/magazine/'.$magazine_single->file.'')}}" alt="">
+								</a>
 							@else
 								<img class="lazy" src="loader.gif" data-src="{{asset('assets/magazine/'.$magazine_single->file.'')}}" data-srcset="{{asset('assets/magazine/'.$magazine_single->file.'')}}" alt="">
 							@endif
