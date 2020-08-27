@@ -100,7 +100,7 @@
                         <div class="form-group">
                           <label for="exampleInputFile">Invoice Period</label>
                           <div class="input-group">
-                            <input type="text" class="form-control" name="invoice_period">
+                            <input type="text" class="form-control" name="invoice_period" value="{{ old('invoice_period') }}" placeholder="Enter Invoice Period">
                             @if($errors->has('invoice_period'))
                               <span class="invalid-feedback" role="alert" style="color:red">
                                 <strong>{{ $errors->first('invoice_period') }}</strong>
@@ -115,7 +115,7 @@
                         <div class="form-group">
                           <label for="exampleInputFile">Invoice Interval</label>
                           <div class="input-group">
-                            <input type="text" class="form-control" name="invoice_interval">
+                            <input type="text" class="form-control" name="invoice_interval" value="{{ old('invoice_interval')}}" placeholder="Enter Invoice Interval">
                             @if($errors->has('invoice_interval'))
                               <span class="invalid-feedback" role="alert" style="color:red">
                                 <strong>{{ $errors->first('invoice_interval') }}</strong>

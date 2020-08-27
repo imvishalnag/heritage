@@ -10,11 +10,12 @@ use DB;
 use App\Payment;
 use Carbon\Carbon;
 use App\PlanSubscriptions;
+use App\Plan;
 class WebController extends Controller
 {
     public function membership()
     {
-        $plan = DB::table('plans')->get();
+        $plan = Plan::orderBy('created_at', 'ASC')->where('is_active', 1)->take(3)->get();
         return view('frontend.pages.membership', compact('plan'));
     }
 

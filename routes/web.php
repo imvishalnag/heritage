@@ -158,7 +158,7 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/home/plan/view/form', 'PostController@index')->name('plan.view');
                 Route::get('/home/plan/update-view/{id}', 'PostController@updateShow')->name('plan.update_view');
                 Route::post('/home/plan/update/', 'PostController@update')->name('plan.update');
-                Route::put('/home/plan/store', 'PostController@store')->name('plan.store');
+                Route::post('/home/plan/store', 'PostController@store')->name('plan.store');
                 Route::get('/home/plan/view', 'PostController@show')->name('plan.show');
                 Route::get('home/plan/delete/{id}', 'PostController@delete')->name('plan.delete');
                 // ajax route
@@ -175,6 +175,18 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('home/member_subscription/delete/{id}', 'PostController@delete')->name('member_subscription.delete');
                 // ajax route
                 Route::get('/home/member_subscription/list', 'PostController@get')->name('admin.ajax.member_subscription_list');
+            });
+
+            // Member
+            Route::namespace('Member')->group(function () {
+                Route::get('/home/member/view/form', 'PostController@index')->name('member.view');
+                Route::get('/home/member/update-view/{id}', 'PostController@updateShow')->name('member.update_view');
+                Route::post('/home/member/update/', 'PostController@update')->name('member.update');
+                Route::put('/home/member/store', 'PostController@store')->name('member.store');
+                Route::get('/home/member/view', 'PostController@show')->name('member.show');
+                Route::get('home/member/delete/{id}', 'PostController@delete')->name('member.delete');
+                // ajax route
+                Route::get('/home/member/list', 'PostController@get')->name('admin.ajax.member_data_list');
             });
         });
 });
