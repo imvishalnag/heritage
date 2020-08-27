@@ -346,6 +346,48 @@
               </li>
             </ul>
           </li>
+          {{-- Plan --}}
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Plan
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="{{route('plan.view')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Plan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('plan.show')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          {{-- Member Subscription --}}
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Member Subscription
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="{{route('member_subscription.view')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View</p>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

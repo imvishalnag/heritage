@@ -270,6 +270,29 @@
             </div>
           </div>
           <!-- ./col -->
+           <!-- ./col -->
+           <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>
+                  @php
+                    if(!empty($member_subscription_count))
+                      print $member_subscription_count;
+                    else
+                      print "0";
+                  @endphp
+                </h3>
+
+                <p>Total Member Subscription</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-photo-video"></i>
+              </div>
+              <a href="{{route('member_subscription.view')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
         </div>
         <!-- /.row -->
         <!-- Main row -->

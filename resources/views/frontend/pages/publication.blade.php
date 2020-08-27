@@ -26,74 +26,35 @@
 			@foreach($publication as $publication_single)
 			<div class="col-lg-4 col-md-6">
 				<div class="xs-box-shadow xs-single-journal xs-mb-30">
-					@if(Auth::guard('member')->check())
-						<div class="entry-thumbnail ">
-							@php
-								$id = App\Member::where('id', (Auth::guard('member')->user()->id))->value('id');
-								$plans = \DB::table('plan_subscriptions')->where('user_id', $id)->first();
-							@endphp
-							@if(!empty($plans))
-							<a href="{{route('subscriptions.pdf.publication', ['id' => encrypt($publication_single->id)])}}">
-								<img class="lazy" src="loader.gif" data-src="{{asset('assets/publication/'.$publication_single->file.'')}}" data-srcset="{{asset('assets/publication/'.$publication_single->file.'')}}" alt="">
-							</a>
-							@else
-								<img class="lazy" src="loader.gif" data-src="{{asset('assets/publication/'.$publication_single->file.'')}}" data-srcset="{{asset('assets/publication/'.$publication_single->file.'')}}" alt="">
-							@endif
-							<div class="post-author">
-								<span class="xs-round-avatar">
-									<p>₹{{$publication_single->price}}</p>
-								</span>
-							</div>
-						</div><!-- .xs-item-header END -->
-						<span class="xs-separetor"></span>
-						<div class="post-meta meta-style-color cust1">
-							<span class="comments-link">
-								<i class="fa fa-book"></i>
-								<a href="#">Title</a>
-							</span><!-- .comments-link -->
-							<span class="view-link pt-5px float-right">
-								<a href="#">{{$publication_single->title}}</a>
-							</span>
-						</div><!-- .post-meta END -->
-						<div class="post-meta meta-style-color cust1 mt-0">
-							<span class="comments-link">
-								<i class="fa fa-book"></i>
-								<a href="#">Writer</a>
-							</span><!-- .comments-link -->
-							<span class="view-link pt-5px float-right">
-								<a title="Writer">{{$publication_single->author}}</a>
-							</span>
-						</div><!-- .post-meta END -->
-					@else
-						<div class="entry-thumbnail ">
-						
+					<div class="entry-thumbnail ">
+						<a href="{{route('subscriptions.pdf.publication', ['id' => encrypt($publication_single->id)])}}">
 							<img class="lazy" src="loader.gif" data-src="{{asset('assets/publication/'.$publication_single->file.'')}}" data-srcset="{{asset('assets/publication/'.$publication_single->file.'')}}" alt="">
-							<div class="post-author">
-								<span class="xs-round-avatar">
-									<p>₹{{$publication_single->price}}</p>
-								</span>
-							</div>
-						</div><!-- .xs-item-header END -->
-						<span class="xs-separetor"></span>
-						<div class="post-meta meta-style-color cust1">
-							<span class="comments-link">
-								<i class="fa fa-book"></i>
-								<a href="#">Title</a>
-							</span><!-- .comments-link -->
-							<span class="view-link pt-5px float-right">
-								<a href="#">{{$publication_single->title}}</a>
+						</a>
+						<div class="post-author">
+							<span class="xs-round-avatar">
+								<p>₹{{$publication_single->price}}</p>
 							</span>
-						</div><!-- .post-meta END -->
-						<div class="post-meta meta-style-color cust1 mt-0">
-							<span class="comments-link">
-								<i class="fa fa-book"></i>
-								<a href="#">Writer</a>
-							</span><!-- .comments-link -->
-							<span class="view-link pt-5px float-right">
-								<a title="Writer">{{$publication_single->author}}</a>
-							</span>
-						</div><!-- .post-meta END -->
-					@endif
+						</div>
+					</div><!-- .xs-item-header END -->
+					<span class="xs-separetor"></span>
+					<div class="post-meta meta-style-color cust1">
+						<span class="comments-link">
+							<i class="fa fa-book"></i>
+							<a href="#">Title</a>
+						</span><!-- .comments-link -->
+						<span class="view-link pt-5px float-right">
+							<a href="#">{{$publication_single->title}}</a>
+						</span>
+					</div><!-- .post-meta END -->
+					<div class="post-meta meta-style-color cust1 mt-0">
+						<span class="comments-link">
+							<i class="fa fa-book"></i>
+							<a href="#">Writer</a>
+						</span><!-- .comments-link -->
+						<span class="view-link pt-5px float-right">
+							<a title="Writer">{{$publication_single->author}}</a>
+						</span>
+					</div><!-- .post-meta END -->
 				</div><!-- .xs-from-journal END -->
 			</div>
 			@endforeach

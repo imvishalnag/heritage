@@ -152,5 +152,29 @@ Route::middleware(['auth'])->group(function () {
                     Route::post('/home/events/events-cover/get-data', 'PostController@get')->name('events.cover.get_data');
                 });
             });
+
+            // Plan
+            Route::namespace('Plan')->group(function () {
+                Route::get('/home/plan/view/form', 'PostController@index')->name('plan.view');
+                Route::get('/home/plan/update-view/{id}', 'PostController@updateShow')->name('plan.update_view');
+                Route::post('/home/plan/update/', 'PostController@update')->name('plan.update');
+                Route::put('/home/plan/store', 'PostController@store')->name('plan.store');
+                Route::get('/home/plan/view', 'PostController@show')->name('plan.show');
+                Route::get('home/plan/delete/{id}', 'PostController@delete')->name('plan.delete');
+                // ajax route
+                Route::get('/home/plan/list', 'PostController@get')->name('admin.ajax.plan_list');
+            });
+            
+            // Member Subscription
+            Route::namespace('MemberSubscription')->group(function () {
+                Route::get('/home/member_subscription/view/form', 'PostController@index')->name('member_subscription.view');
+                Route::get('/home/member_subscription/update-view/{id}', 'PostController@updateShow')->name('member_subscription.update_view');
+                Route::post('/home/member_subscription/update/', 'PostController@update')->name('member_subscription.update');
+                Route::put('/home/member_subscription/store', 'PostController@store')->name('member_subscription.store');
+                Route::get('/home/member_subscription/view', 'PostController@show')->name('member_subscription.show');
+                Route::get('home/member_subscription/delete/{id}', 'PostController@delete')->name('member_subscription.delete');
+                // ajax route
+                Route::get('/home/member_subscription/list', 'PostController@get')->name('admin.ajax.member_subscription_list');
+            });
         });
 });

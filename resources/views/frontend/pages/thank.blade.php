@@ -40,7 +40,7 @@
 			<div class="col-lg-8 col-md-6 col-xs-6">
 				<div class="xs-box-shadow xs-single-journal xs-mb-30 pt-3">
 					<div class="xs-heading text-center">
-							<h4 class="xs-mb-0 xs-title" style="font-size:30px;"> Thank You<span class="color-green"> your menbership is successful</span> </h4>
+							<h4 class="xs-mb-0 xs-title" style="font-size:30px;"> Thank You <br> <span class="color-green"> your Membership purchasing is successful</span> </h4>
 							<small> Plan Validity: {{$plans->invoice_period}} Months</small>
 							<small>Plan Starts: {{$plans->starts_at}}</small>
 							<small>Plan Expires: {{$plans->ends_at}}</small>

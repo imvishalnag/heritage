@@ -30,11 +30,22 @@
 							<h4>Plan Selected : {{$plan->name}}</h4>
 							<input type="hidden" name="plan_id" value="{{$plan->id}}">
 							<h6 style="text-decoration:underline;color:#fff">Plan Detail</h6>
-							<ol class="text-white about-ol-list" style="padding-left:10px">
-								<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
-								<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua</li>
-								<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor labore et dolore magna aliqua</li>
-							</ol>
+							<div class="text-white about-ol-list" style="padding-left:10px">
+								@php
+									$tmp_arr1= explode("\n\n",$plan->rule);
+									$final_arr=array();
+									foreach($tmp_arr1 as $section){
+										$final_arr[]= explode("\n",$section);
+									}
+									$html="";
+									foreach($final_arr as $section){
+										$html.="<ol><li>";
+										$html.=implode("</li><li>",$section);
+										$html.="</li></ol>";
+									}
+									echo $html;
+								@endphp
+							</div>
 							<button type="submit" class="btn btn-outline-primary">Pay Now</button>
 						</div><!-- .xs-contact-form-wraper END -->
 					</form>

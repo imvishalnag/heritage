@@ -35,7 +35,7 @@ class HomeController extends Controller
         $events_cover_count         = DB::table('events_cover')->count();
         $events_individual_count    = DB::table('individual_events_gallery')->count();
         $magazine_count             = DB::table('magazine')->count();
-        
+        $member_subscription_count  = DB::table('plan_subscriptions')->count();
         return view('admin.auth.home.home',[
             'heritage_count'            => $heritage_count,
             'publication_count'         => $publication_count,
@@ -48,6 +48,7 @@ class HomeController extends Controller
             'events_cover_count'        => $events_cover_count,
             'events_individual_count'   => $events_individual_count,
             'magazine_count'            => $magazine_count,
+            'member_subscription_count' => $member_subscription_count,
             ]);
     }
 }

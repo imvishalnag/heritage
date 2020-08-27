@@ -149,18 +149,25 @@ class WebController extends Controller
         }catch(DecryptException $e) {
             return redirect()->back();
         }
-
-        // Generate Download link
-        $book = DB::table('publication')->where('id', $id)->first();
-        if(!empty($book->pdf_file)){
-            if (file_exists(public_path($book->pdf_file))){
-                return response()->download(public_path($book->pdf_file));
+    
+        // Subscription Check
+        $subscription_check = PlanSubscriptions::where('user_id',Auth::guard('member')->user()->id)->first();
+        if($subscription_check){
+             // Generate Download link
+            $book = DB::table('publication')->where('id', $id)->first();
+            if(!empty($book->pdf_file)){
+                if (file_exists(public_path($book->pdf_file))){
+                    return response()->download(public_path($book->pdf_file));
+                }else{
+                    abort(404);
+                }
             }else{
                 abort(404);
             }
         }else{
-            abort(404);
+            return redirect()->route('membership')->with('message', 'You haven\'t\ subscribed to any Plan! Subscribe it first.');
         }
+       
     }
     public function subscriptionPdfMagazine($id){
         try {
@@ -169,16 +176,22 @@ class WebController extends Controller
             return redirect()->back();
         }
 
-        // Generate Download link
-        $book = DB::table('magazine')->where('id', $id)->first();
-        if(!empty($book->pdf_file)){
-            if (file_exists(public_path($book->pdf_file))){
-                return response()->download(public_path($book->pdf_file));
+        $subscription_check = PlanSubscriptions::where('user_id',Auth::guard('member')->user()->id)->first();
+        if($subscription_check){
+             // Generate Download link
+            $book = DB::table('magazine')->where('id', $id)->first();
+            if(!empty($book->pdf_file)){
+                if (file_exists(public_path($book->pdf_file))){
+                    return response()->download(public_path($book->pdf_file));
+                }else{
+                    abort(404);
+                }
             }else{
                 abort(404);
             }
         }else{
-            abort(404);
+            return redirect()->route('membership')->with('message', 'You haven\'t\ subscribed to any Plan! Subscribe it first.');
         }
+       
     }
 }

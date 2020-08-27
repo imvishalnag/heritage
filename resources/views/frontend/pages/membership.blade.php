@@ -44,44 +44,6 @@
 				</div>
 				@endforeach
 			@endif
-			{{-- <div class="col-lg-4 col-md-6 col-xs-6">
-				<div class="xs-box-shadow xs-single-journal xs-mb-30">
-					<div class="entry-thumbnail ">
-						<h4> 6 Months plan</h4>
-						<div class="post-author">
-							<span class="xs-round-avatar">
-								<p>₹700</p>
-							</span>
-						</div>
-					</div><!-- .xs-item-header END -->
-					<span class="xs-separetor"></span>
-					<div class="post-meta meta-style-color cust1">
-						<p class="mb-0">Publishing useful literatures on indigenous traditions and spiritual Knowledge of different ethnic communities of this region.</p>
-					</div><!-- .post-meta END -->
-					<div class="post-meta meta-style-color cust1 text-center mt-0">
-						<a href="{{route('before_checkout')}}" class="btn btn-secondary bg-bondiBlue">Select this plan</a>
-					</div><!-- .post-meta END -->
-				</div><!-- .xs-from-journal END -->
-			</div>
-			<div class="col-lg-4 col-md-6 col-xs-6">
-				<div class="xs-box-shadow xs-single-journal xs-mb-30">
-					<div class="entry-thumbnail ">
-						<h4> 12 Months plan</h4>
-						<div class="post-author">
-							<span class="xs-round-avatar">
-								<p>₹1000</p>
-							</span>
-						</div>
-					</div><!-- .xs-item-header END -->
-					<span class="xs-separetor"></span>
-					<div class="post-meta meta-style-color cust1">
-						<p class="mb-0">Publishing useful literatures on indigenous traditions and spiritual Knowledge of different ethnic communities of this region.</p>
-					</div><!-- .post-meta END -->
-					<div class="post-meta meta-style-color cust1 text-center mt-0">
-						<a href="{{route('before_checkout')}}" class="btn btn-secondary bg-bondiBlue">Select this plan</a>
-					</div><!-- .post-meta END -->
-				</div><!-- .xs-from-journal END -->
-			</div> --}}
 		</div><!-- .row end -->
 		<div class="row pagination-center">
 		</div>
