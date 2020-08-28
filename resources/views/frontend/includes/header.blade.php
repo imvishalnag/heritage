@@ -7,7 +7,7 @@
 		<title>Heritage Foundation</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no"">
-		
+		@yield('meta')
 		<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto+Slab:400,700" rel="stylesheet">
 
 		<link rel="icon" type="image/png" href="{{asset('frontend/assets/images/favicon.jpg')}}">

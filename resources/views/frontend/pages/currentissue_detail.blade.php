@@ -1,4 +1,11 @@
 @extends('frontend.layouts.app')
+@section('meta')
+    <meta property="og:url"                content="http://webinfotechghy.xyz" />
+    <meta property="og:type"               content="news" />
+    <meta property="og:title"              content=" {{$current_issue[0]->heading}}" />
+    <meta property="og:description"        content="{!! $current_issue[0]->description !!}" />
+    <meta property="og:image"              content="{{asset('assets/currentissue/'.$current_issue[0]->file.'')}}" />
+@endsection
 @section('content')
 <!-- welcome section -->
 <!--breadcumb start here-->
@@ -50,10 +57,11 @@
 					</div><!-- .post-media END -->
 					<div class="form-group">
 						{!! Share::page(route('current_issue.single', ['id'=>encrypt($current_issue_single->id)]), $current_issue[0]->heading)
-											->facebook()
-											->twitter()
-											->linkedin()
-											->whatsapp();!!}
+						->facebook()
+						->twitter()
+						->linkedin()
+						->whatsapp();
+						!!}
 					</div>
 					<div class="post-body xs-border xs-padding-40">
 						<div class="entry-header">
