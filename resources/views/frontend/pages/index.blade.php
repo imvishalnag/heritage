@@ -6,8 +6,7 @@
 		<div class="xs-welcome-content" style="background-image: url({{asset('frontend/assets/images/slider/slider_1.jpg')}});">
 			<div class="container row">
 				<div class="xs-welcome-wraper banner-verion-2 color-white col-md-8 content-left">
-					<p>Charity for childrens</p>
-					<h2>Hunger is stalking the globe</h2>
+					<h2>Welcome to Heritage Foundation</h2>
 					<div class="xs-btn-wraper">
 						<a href="#" class="btn btn-outline-primary">
 							contact us
@@ -23,8 +22,7 @@
 		<div class="xs-welcome-content" style="background-image: url({{asset('frontend/assets/images/slider/slider_2.jpg')}});">
 			<div class="container row">
 				<div class="xs-welcome-wraper banner-verion-2 color-white col-md-8 content-right">
-					<p>Charity for childrens</p>
-					<h2>Hunger is stalking the globe</h2>
+					<h2>Welcome to Heritage Foundation</h2>
 					<div class="xs-btn-wraper">
 						<a href="{{route('contact')}}" class="btn btn-outline-primary">
 							contact us
@@ -40,8 +38,7 @@
 		<div class="xs-welcome-content" style="background-image: url({{asset('frontend/assets/images/slider/slider_3.jpg')}});">
 			<div class="container row">
 				<div class="xs-welcome-wraper banner-verion-2 color-white col-md-8 content-left">
-					<p>Charity for childrens</p>
-					<h2>Hunger is stalking the globe</h2>
+					<h2>Welcome to Heritage Foundation</h2>
 					<div class="xs-btn-wraper">
 						<a href="{{route('contact')}}" class="btn btn-outline-primary">
 							contact us
@@ -57,8 +54,7 @@
 		<div class="xs-welcome-content" style="background-image: url({{asset('frontend/assets/images/slider/slider_4.jpg')}});">
 			<div class="container row">
 				<div class="xs-welcome-wraper banner-verion-2 color-white col-md-8 content-right">
-					<p>Charity for childrens</p>
-					<h2>Hunger is stalking the globe</h2>
+					<h2>Welcome to Heritage Foundation</h2>
 					<div class="xs-btn-wraper">
 						<a href="{{route('contact')}}" class="btn btn-outline-primary">
 							contact us
@@ -74,8 +70,7 @@
 		<div class="xs-welcome-content" style="background-image: url({{asset('frontend/assets/images/slider/slider_5.jpg')}});">
 			<div class="container row">
 				<div class="xs-welcome-wraper banner-verion-2 color-white col-md-8 content-left">
-					<p>Charity for childrens</p>
-					<h2>Hunger is stalking the globe</h2>
+					<h2>Welcome to Heritage Foundation</h2>
 					<div class="xs-btn-wraper">
 						<a href="{{route('contact')}}" class="btn btn-outline-primary">
 							contact us
@@ -108,8 +103,7 @@
 		<div class="xs-welcome-content" style="background-image: url({{asset('frontend/assets/images/slider/slider_7.jpg')}});">
 			<div class="container row">
 				<div class="xs-welcome-wraper banner-verion-2 color-white col-md-8 content-left">
-					<p>Charity for childrens</p>
-					<h2>Hunger is stalking the globe</h2>
+					<h2>Welcome to Heritage Foundation</h2>
 					<div class="xs-btn-wraper">
 						<a href="{{route('donation')}}" class="btn btn-outline-primary">
 							contact us
@@ -125,8 +119,7 @@
 		<div class="xs-welcome-content" style="background-image: url({{asset('frontend/assets/images/slider/slider_8.jpg')}});">
 			<div class="container row">
 				<div class="xs-welcome-wraper banner-verion-2 color-white col-md-8 content-right">
-					<p>Charity for childrens</p>
-					<h2>Hunger is stalking the globe</h2>
+					<h2>Welcome to Heritage Foundation</h2>
 					<div class="xs-btn-wraper">
 						<a href="{{route('contact')}}" class="btn btn-outline-primary">
 							contact us

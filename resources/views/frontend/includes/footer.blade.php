@@ -104,6 +104,7 @@
 		<script src="{{asset('frontend/assets/js/lazyload.js')}}"></script>
 		 <script src="{{asset('frontend/assets/js/home-owl.js')}}"></script> 
 		<!-- <script src="{{asset('frontend/assets/js/video.js')}}"></script> -->
+		<script src="{{ asset('js/share.js') }}"></script>
 		@yield('script')
 	</body>
 </html>

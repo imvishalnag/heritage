@@ -48,12 +48,19 @@
 					<div class="post-media post-image fix-width" style="min-width: 730px; min-height: 387px; background-color: #eee;">
 						<img  src="{{asset('loader.gif')}}" data-src="{{asset('assets/currentissue/'.$current_issue[0]->file.'')}}" data-srcset="{{asset('assets/currentissue/'.$current_issue[0]->file.'')}}" class="img-responsive lazy" alt="">
 					</div><!-- .post-media END -->
-
+					<div class="form-group">
+						{!! Share::page(route('current_issue.single', ['id'=>encrypt($current_issue_single->id)]), $current_issue[0]->heading)
+											->facebook()
+											->twitter()
+											->linkedin()
+											->whatsapp();!!}
+					</div>
 					<div class="post-body xs-border xs-padding-40">
 						<div class="entry-header">
 							<div class="post-meta row">
 								<div class="col-md-2 xs-padding-0">
-				 					<span class="post-meta-date"><b>{{$current_issue[0]->day}}</b> {{$current_issue[0]->month}}</span>
+									 <span class="post-meta-date"><b>{{$current_issue[0]->day}}</b> {{$current_issue[0]->month}}</span>
+									 
 				 				</div>
 							</div><!-- .row end -->
 			 				<h2 class="entry-title xs-post-entry-title">
