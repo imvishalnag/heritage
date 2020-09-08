@@ -56,12 +56,11 @@
 						<img  src="{{asset('loader.gif')}}" data-src="{{asset('assets/currentissue/'.$current_issue[0]->file.'')}}" data-srcset="{{asset('assets/currentissue/'.$current_issue[0]->file.'')}}" class="img-responsive lazy" alt="">
 					</div><!-- .post-media END -->
 					<div class="form-group">
-						{!! Share::page(route('current_issue.single', ['id'=>encrypt($current_issue_single->id)]), $current_issue[0]->heading)
-						->facebook()
-						->twitter()
-						->linkedin()
-						->whatsapp();
-						!!}
+						<ul>
+							<li><a href="http://www.facebook.com/sharer.php?u={{route('current_issue.single', ['id'=>encrypt($current_issue_single->id)])}}" class="social-button " id="" title=""><span class="fa fa-facebook-official"></span></a></li>
+							<li>
+								<a href="https://twitter.com/intent/tweet?text={{$current_issue[0]->heading}}&amp;url={{route('current_issue.single', ['id'=>encrypt($current_issue_single->id)])}}" class="social-button " id="" title=""><span class="fa fa-twitter"></span></a></li>
+							<li><a target="_blank" href="https://wa.me/?text={{route('current_issue.single', ['id'=>encrypt($current_issue_single->id)])}}" class="social-button " id="" title=""><span class="fa fa-whatsapp"></span></a></li></ul>
 					</div>
 					<div class="post-body xs-border xs-padding-40">
 						<div class="entry-header">
