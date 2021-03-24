@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Members View</h1>
+            <h1>Change Password</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -26,20 +26,31 @@
         <div class="row">
           <!-- left column -->
           <div class="col-md-12">
-           <table id="member_list" class="table table-striped table-bordered dt-responsive wrap" cellspacing="0" width="100%">
-            <thead>
-            <tr>
-                <th>Sl No</th>
-                <th>User Name</th>
-                <th>Name</th>
-                <th>email</th>
-                <th>Phone</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+            <form action="{{ route('member.do.change_password')}}" method="POST">
+                @csrf
+                <input type="hidden" name="id" value="{{ $member->id }}">
+                <div class="form-group">
+                    <label for="exampleInputFile">Enter New Password</label>
+                    <input  type="password" class="form-control" placeholder="Enter New Password" name="password" required="">
+                    @if($errors->has('password'))
+                      <span class="invalid-feedback" role="alert" style="color:red">
+                        <strong>{{ $errors->first('password') }}</strong>
+                      </span>
+                    @enderror
+                  </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Enter Confirm Password</label>
+                    <input  type="password" class="form-control" placeholder="Enter Confirm Password" name="confirm_password" required="">
+                    @if($errors->has('confirm_password'))
+                      <span class="invalid-feedback" role="alert" style="color:red">
+                        <strong>{{ $errors->first('confirm_password') }}</strong>
+                      </span>
+                    @enderror
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary float-right">Submit</button>
+                  </div>
+            </form>
           </div>
           <!--/.col (left) -->
         </div>

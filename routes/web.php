@@ -187,6 +187,10 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('home/member/delete/{id}', 'PostController@delete')->name('member.delete');
                 // ajax route
                 Route::get('/home/member/list', 'PostController@get')->name('admin.ajax.member_data_list');
+
+                // Password Change
+                Route::get('change/password/{id}', 'PostController@changePassword')->name('member.change_password');
+                Route::post('do/password', 'PostController@doChangePassword')->name('member.do.change_password');
             });
         });
 });
